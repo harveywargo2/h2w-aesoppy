@@ -3,18 +3,7 @@ import pandas as pd
 
 
 class Financials:
-    """
-    Description:
-        GuruFocus api call to historical financial data
-        Historical data includes annual and quarterly
-    Args:
-        token (string): GuruFocus API Token
-        ticker (string): Stock Ticker
-    Returns:
-        api_data (object): raw api output from api call
-        fin_annual_data (dataframe): annual data
-        fin_quarterly_data (dataframe)
-    """
+
     def __init__(self, **kwargs):
         self.token = kwargs.get('token', 'error')
         self.ticker = kwargs.get('ticker', 'error')
