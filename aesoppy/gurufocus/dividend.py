@@ -1,17 +1,74 @@
 import requests
+import pandas as pd
 
 
 class DividendHistory:
+    """
+    Description:
+        GuruFocus api call to historical dividend data
+    Args:
+        token (string): GuruFocus API Token
+        ticker (string): Stock Ticker
+        frequency (int): dividend payout frequency
+
+    Returns:
+        api_data (object): raw api output from api call
+    """
 
     def __init__(self, **kwargs):
         self.token = kwargs.get('token', 'error')
         self.ticker = kwargs.get('ticker', 'error')
-        self.data = self.api_data()
-        self.data_type = type(self.data)
+        self.frequency = kwargs.get('frequency', 4)
+        self.api_data = self._div_api_data()
 
 
-    def api_data(self):
+    def _div_api_data(self):
         return requests.get(f'https://api.gurufocus.com/public/user/{str(self.token)}/stock/{str(self.ticker)}/dividend').json()
 
 
+    def div_df(self, **kwargs):
+        self.column_normalize = kwargs.get('column_normalize', True)
+        self.index_exdate = kwargs.get('index_exdate', True)
+        """
+        Description:
+            Transformed DataFrame Object
+        Args:
+            column_normalize (boolean): 
+                True (default): 
+                False: none normalized dataframe
+            index_exdate (boolean):
+                True (default): Ex Dividend Date set to Index
+                False: integer index
+        Returns:
+            Pandas Dataframe of Indexed Dividend History
+        """
+        div_list = self.api_data
+        div_df = pd.DataFrame(div_list)
+        div_df['ex_date'] = pd.to_datetime(div_df['ex_date'])
+        div_df['amount'] = div_df['amount'].astype(float)
+
+
+        if self.column_normalize == True:
+            div_df.rename(columns={'amount': 'Dividend',
+                                   'ex_date': 'ExDate',
+                                   'record_date': 'RecordDate',
+                                   'pay_date': 'PayDate',
+                                   'type': 'DividendType',
+                                   'currency': 'Currency'}, inplace=True)
+        else:
+            div_df #Do Nothing
+
+
+        if self.index_exdate == True:
+            if any(div_df.columns == 'ExDate'):
+                div_df.set_index('ExDate', inplace=True)
+            elif any(div_df.columns == 'ex_date'):
+                div_df.set_index('ex_date', inplace=True)
+            else:
+                div_df # Do Nothing
+        else:
+            div_df # Do Nothing
+
+
+        return div_df
 
