@@ -54,7 +54,7 @@ class DivYieldAnalysis:
 
 
     def _div_yield_analysis_aggregate_df(self):
-        dy_df1 = self.div_yield_analysis
+        dy_df1 = self.div_yield_analysis_cy
 
         dy_df2 = dy_df1.groupby(dy_df1.index.year).agg(
             {'SharePrice': ['min', 'max', 'mean', 'median'],
