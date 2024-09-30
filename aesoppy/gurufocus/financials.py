@@ -8,8 +8,8 @@ class Financials:
         self.token = kwargs.get('token', 'error')
         self.ticker = kwargs.get('ticker', 'error')
         self.fin_data = self._fin_api_data()
-        self.fin_annual_data = self._fin_annual_api_data()
-        self.fin_quarterly_data = self._fin_quarterly_api_data()
+        self.annual_data = self._fin_annual_api_data()
+        self.quarterly_data = self._fin_quarterly_api_data()
 
 
     def _fin_api_data(self):
@@ -48,6 +48,5 @@ class Financials:
         qtr_df4 = qtr_df3.convert_dtypes()
 
         return qtr_df4
-
 
 
