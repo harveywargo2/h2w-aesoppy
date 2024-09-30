@@ -42,7 +42,7 @@ class PriceHistory:
         if self.index_exdate == True:
             price_df.set_index('Date', inplace=True)
         else:
-            price_df
+            price_df # Do Nothing
 
 
         return price_df
