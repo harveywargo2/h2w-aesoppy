@@ -3,16 +3,6 @@ import pandas as pd
 
 
 class DividendHistory:
-    """
-    Description:
-        GuruFocus api call to historical dividend data
-    Args:
-        token (string): GuruFocus API Token
-        ticker (string): Stock Ticker
-
-    Returns:
-        api_data (object): raw api output from api call
-    """
 
     def __init__(self, **kwargs):
         self.token = kwargs.get('token', 'error')
@@ -27,19 +17,7 @@ class DividendHistory:
     def div_df(self, **kwargs):
         self.column_normalize = kwargs.get('column_normalize', True)
         self.index_exdate = kwargs.get('index_exdate', True)
-        """
-        Description:
-            Transformed DataFrame Object
-        Args:
-            column_normalize (boolean): 
-                True (default): 
-                False: none normalized dataframe
-            index_exdate (boolean):
-                True (default): Ex Dividend Date set to Index
-                False: integer index
-        Returns:
-            Pandas Dataframe of Indexed Dividend History
-        """
+
         div_list = self.api_data
         div_df = pd.DataFrame(div_list)
         div_df['ex_date'] = pd.to_datetime(div_df['ex_date'])
