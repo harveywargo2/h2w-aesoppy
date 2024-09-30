@@ -9,7 +9,6 @@ class DividendHistory:
     Args:
         token (string): GuruFocus API Token
         ticker (string): Stock Ticker
-        frequency (int): dividend payout frequency
 
     Returns:
         api_data (object): raw api output from api call
@@ -18,7 +17,6 @@ class DividendHistory:
     def __init__(self, **kwargs):
         self.token = kwargs.get('token', 'error')
         self.ticker = kwargs.get('ticker', 'error')
-        self.frequency = kwargs.get('frequency', 4)
         self.api_data = self._div_api_data()
 
 
