@@ -26,6 +26,7 @@ class Financials:
     def _fin_api_data(self):
         return requests.get(f'https://api.gurufocus.com/public/user/{str(self.token)}/stock/{str(self.ticker)}/financials').json()
 
+
     def _fin_annual_api_data(self):
         annual_df1 = pd.DataFrame.from_dict(self.fin_data)
         x_loc = 0
