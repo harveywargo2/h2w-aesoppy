@@ -10,6 +10,8 @@ class Financials:
         self.fin_data = self._fin_api_data()
         self.annual_data = self._fin_annual_api_data()
         self.quarterly_data = self._fin_quarterly_api_data()
+        self.reit = self._reit()
+        self.fin_template = self._fin_template_parameters()
 
 
     def _fin_api_data(self):
@@ -48,5 +50,26 @@ class Financials:
         qtr_df4 = qtr_df3.convert_dtypes()
 
         return qtr_df4
+
+    def _reit(self):
+        df1 = pd.DataFrame.from_dict(self.fin_data)
+        df2 = pd.json_normalize(df1.loc['financial_template_parameters'])
+
+        check = df2.loc[0, 'REITs']
+
+        if check == 'Y':
+            output = True
+        else:
+            output = False
+
+        return output
+
+    def _fin_template_parameters(self):
+        df1 = pd.DataFrame.from_dict(self.fin_data)
+        df2 = pd.json_normalize(df1.loc['financial_template_parameters'])
+
+        return df2
+
+
 
 
