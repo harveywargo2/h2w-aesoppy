@@ -100,7 +100,7 @@ class AnnualFinAnalysis:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'income_statement.Cost of Goods Sold'):
-            fy_df2['CostOfGoodsSold'] = fy_df1['income_statement.Cost of Goods Sold'].astype(float)
+            fy_df2['COGS'] = fy_df1['income_statement.Cost of Goods Sold'].astype(float)
         else:
             fy_df2 # Do Nothing
 
@@ -110,12 +110,12 @@ class AnnualFinAnalysis:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'income_statement.Selling, General, & Admin. Expense'):
-            fy_df2['SellingGeneralAdminExpense'] = fy_df1['income_statement.Selling, General, & Admin. Expense'].astype(float)
+            fy_df2['SGA'] = fy_df1['income_statement.Selling, General, & Admin. Expense'].astype(float)
         else:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'income_statement.Research & Development'):
-            fy_df2['ResearchAndDevelopment'] = fy_df1['income_statement.Research & Development'].astype(float)
+            fy_df2['RND'] = fy_df1['income_statement.Research & Development'].astype(float)
         else:
             fy_df2 # Do Nothing
 
@@ -145,7 +145,7 @@ class AnnualFinAnalysis:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'balance_sheet.Marketable Securities'):
-            fy_df2['MarketableSecurities'] = fy_df1['balance_sheet.Marketable Securities'].astype(float)
+            fy_df2['MarketSecurities'] = fy_df1['balance_sheet.Marketable Securities'].astype(float)
         else:
             fy_df2 # Do Nothing
 
@@ -190,7 +190,7 @@ class AnnualFinAnalysis:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'cashflow_statement.Capital Expenditure'):
-            fy_df2['CashForCapex'] = fy_df1['cashflow_statement.Capital Expenditure'].astype(float)
+            fy_df2['CAPEX'] = fy_df1['cashflow_statement.Capital Expenditure'].astype(float)
         else:
             fy_df2 # Do Nothing
 
@@ -225,12 +225,12 @@ class AnnualFinAnalysis:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'income_statement.Shares Outstanding (Diluted Average)'):
-            fy_df2['SharesOutstandingDiluted'] = fy_df1['income_statement.Shares Outstanding (Diluted Average)'].astype(float)
+            fy_df2['SharesOutDiluted'] = fy_df1['income_statement.Shares Outstanding (Diluted Average)'].astype(float)
         else:
             fy_df2 # Do Nothing
 
         if any(fy_df1.columns == 'valuation_and_quality.Shares Outstanding (Basic Average)'):
-            fy_df2['SharesOutstandingBasic'] = fy_df1['valuation_and_quality.Shares Outstanding (Basic Average)'].astype(float)
+            fy_df2['SharesOutBasic'] = fy_df1['valuation_and_quality.Shares Outstanding (Basic Average)'].astype(float)
         else:
             fy_df2 # Do Nothing
 
@@ -259,6 +259,10 @@ class AnnualFinAnalysis:
         else:
             fy_df2 # Do Nothing
 
+        if any(fy_df1.columns == 'per_share_data_array.Earnings per Share (Diluted)'):
+            fy_df2['PerShareEarnings'] = fy_df1['per_share_data_array.Earnings per Share (Diluted)'].astype(float)
+        else:
+            fy_df2 # Do Nothing
 
         return fy_df2
 
