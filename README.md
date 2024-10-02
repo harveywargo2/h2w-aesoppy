@@ -36,6 +36,7 @@
 | CashForDividends   | Dividends Paid             |
 | CAPEX              | Capital Expenditure        |
 | CashPaidToDebt     | Debt Paid Down             |
+| FreeCashFlow       | Free Cash Flow             |  
 | StockPriceHigh     | Fiscal Year High Price     |
 | StockPriceLow      | Fiscal Year Low Price      |
 | PerShareRevenue    | Revenue Per Share          |
