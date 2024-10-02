@@ -12,7 +12,6 @@ readme = "README.md"
 authors = [{ name = "Harvey Wargo"}]
 license = {file = "LICENSE.txt"}
 classifiers = [
-    "License :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
