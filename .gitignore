@@ -1,5 +1,5 @@
 #Personal Testing Or Directories to not Push to git
-**/workspace/**
+test/**
 
 
 #Environment Variables via Dot-Env Loads
