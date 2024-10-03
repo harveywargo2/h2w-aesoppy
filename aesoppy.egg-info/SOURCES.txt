@@ -1,0 +1,15 @@
+LICENSE.txt
+README.md
+pyproject.toml
+aesoppy/__init__.py
+aesoppy.egg-info/PKG-INFO
+aesoppy.egg-info/SOURCES.txt
+aesoppy.egg-info/dependency_links.txt
+aesoppy.egg-info/requires.txt
+aesoppy.egg-info/top_level.txt
+aesoppy/gurufocus/__init__.py
+aesoppy/gurufocus/analysis_wrangler.py
+aesoppy/gurufocus/dividend.py
+aesoppy/gurufocus/financials.py
+aesoppy/gurufocus/price.py
+test/test.py

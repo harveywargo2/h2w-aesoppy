@@ -1,0 +1,86 @@
+Metadata-Version: 2.1
+Name: aesoppy
+Version: 1.0.0
+Summary: Python Library for Data Wrangling and API Interactions on Stock Market Data
+Author: Harvey Wargo
+License: MIT License
+        
+        Copyright (c) 2024 Harvey Wargo 2
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/harveywargo2/aesoppy
+Keywords: Stock,GuruFocus,Stock Data,Dividends
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: pandas
+
+# aesoppy
+- Python Library for Data Wrangling and API Interactions on Stock Market Data for Analysis in Jupyter Notebooks
+
+
+# Current Data Integrations 
+- [Gurufocus.com](https://www.gurufocus.com)
+
+
+# Normalized 10K DataFrame Columns
+| Column             | Data Point                 |
+|:-------------------|:---------------------------|
+| FiscalYear         | Fiscal Year                |
+| Revenue            | Revenue                    |
+| COGS               | Costs of Goods Sold        |
+| SGA                | Selling General Admin      |
+| GrossProfit        | Gross Profit               |
+| RND                | Research and Dev           |
+| OperatingExpense   | Operating Expense          |
+| OperatingIncome    | Operating Income           |
+| TaxPaid            | Tax Paid                   |
+| NetIncome          | Net Income                 |
+| CashEquivalents    | Cash                       |
+| MarketSecurities   | Marketable Securities      |
+| CurrentAssets      | Current Assets             |
+| LongAssets         | Long Assets                |
+| CurrentLiabilities | Current Liabilities        |
+| LongLiabilities    | Long Liabilities           |
+| TreasuryStock      | Treasury Stock             |
+| CommonStock        | Common Stock               |
+| StockIssuance      | Share Issues               |
+| StockRepurchase    | Share Buybacks             |
+| SharesOutBasic     | Shares Outstanding Basic   |
+| SharesOutDiluted   | Shares Outstanding Diluted |
+| MarketCap          | Market Capitalization      |
+| CashFromOperations | Cash From Operations       |
+| CashForDividends   | Dividends Paid             |
+| CAPEX              | Capital Expenditure        |
+| CashPaidToDebt     | Debt Paid Down             |
+| FreeCashFlow       | Free Cash Flow             |  
+| StockPriceHigh     | Fiscal Year High Price     |
+| StockPriceLow      | Fiscal Year Low Price      |
+| PerShareRevenue    | Revenue Per Share          |
+| PerShareDividends  | Dividends Per Share        |
+| PerShareFcf        | Free Cash Flow Per Share   |
+| PerShareEarnings   | Earning Per Share          |
+
+
+# Normalized Dividend Price Dataframe
+
