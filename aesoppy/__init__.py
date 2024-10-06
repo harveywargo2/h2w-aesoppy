@@ -1,1 +1,1 @@
-import gurufocus
+import aesoppy.gurufocus
