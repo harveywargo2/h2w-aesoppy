@@ -2,30 +2,35 @@ import requests
 import pandas as pd
 
 
-class PriceHistory:
+class GuruPriceHistory:
 
     def __init__(self, **kwargs):
         self.token = kwargs.get('token', 'error')
         self.ticker = kwargs.get('ticker', 'error')
-        self.price_data = self._price_api_data()
+        self.api_data = self._api_data()
+        self.api_data_type = type(self._api_data)
+        self.api_data_df = self._api_data_df()
+        self.api_data_df_date_index = self._api_data_df_date_index()
 
-    def _price_api_data(self):
+
+    def _api_data(self):
         return requests.get(f'https://api.gurufocus.com/public/user/{str(self.token)}/stock/{str(self.ticker)}/price').json()
 
-    def price_df(self, **kwargs):
 
-        self.index_exdate = kwargs.get('index_date', True)
-        price_list = self.price_data
-        price_df = pd.DataFrame(price_list, columns=['Date', 'SharePrice'])
-        price_df['Date'] = pd.to_datetime(price_df['Date'])
+    def _api_data_df(self):
 
-
-        if self.index_exdate == True:
-            price_df.set_index('Date', inplace=True)
-        else:
-            price_df # Do Nothing
-
+        price_list = self.api_data
+        price_df = pd.DataFrame(price_list, columns=['date', 'share_price'])
+        price_df['date'] = pd.to_datetime(price_df['date'])
 
         return price_df
 
+
+    def _api_data_df_date_index(self):
+
+        price_list = self.api_data
+        price_df = pd.DataFrame(price_list, columns=['date', 'share_price'])
+        price_df['date'] = pd.to_datetime(price_df['date'])
+
+        return price_df
 
