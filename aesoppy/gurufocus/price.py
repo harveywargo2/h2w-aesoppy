@@ -10,7 +10,7 @@ class GuruPriceHistory:
         self.api_data = self._api_data()
         self.api_data_type = type(self._api_data)
         self.api_data_df = self._api_data_df()
-        self.api_data_df_date_index = self._api_data_df_date_index()
+        self.aesop_normalized = self._aesop_normalized()
 
 
     def _api_data(self):
@@ -26,7 +26,7 @@ class GuruPriceHistory:
         return price_df
 
 
-    def _api_data_df_date_index(self):
+    def _aesop_normalized(self):
 
         price_list = self.api_data
         price_df = pd.DataFrame(price_list, columns=['date', 'share_price'])
