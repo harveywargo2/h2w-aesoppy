@@ -35,11 +35,11 @@ class GuruDividendHistory:
         div_df['dividend_type'] = div_df['dividend_type'].replace('Cash Div.', 'regular')
         div_df['dividend_type'] = div_df['dividend_type'].replace('Special Div.', 'special')
 
-        div_df['ex_date'] = pd.to_datetime(div_df['ex_date'])
-        div_df['record_date'] = pd.to_datetime(div_df['record_date'])
+        #div_df['ex_date'] = pd.to_datetime(div_df['ex_date'])
+        #div_df['record_date'] = pd.to_datetime(div_df['record_date'])
         #div_df['pay_date'] = pd.to_datetime(div_df['pay_date'])
 
-        div_df['dividend_amount'] = div_df['dividend_amount'].astype(float)
+        div_df['dividend_amount'] = div_df['dividend_amount']
 
 
         return div_df
