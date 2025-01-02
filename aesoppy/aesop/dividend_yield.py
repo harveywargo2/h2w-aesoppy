@@ -31,16 +31,17 @@ class DividendYieldAnalysis:
         dyt_df1 = price_df1.join(div_df3)
 
         # Remove NaN values
-        dyt_df1['dividend_fwd'] = dyt_df1['dividend_amount'].fillna(0)
+        dyt_df1['dividend_pay'] = dyt_df1['dividend_amount'].fillna(0)
 
         for index, row in dyt_df1.iterrows():
-            if row['dividend_fwd'] > 0:
-                div_var = row['dividend_fwd']
+            if row['dividend_pay'] > 0:
+                div_var = row['dividend_pay']
 
             else:
-                dyt_df1.at[index, 'dividend_fwd'] = div_var
+                dyt_df1.at[index, 'dividend_pay'] = div_var
 
-        dyt_df1['dividend_yield_fwd'] = (dyt_df1['dividend_fwd'] * self.frequency) / dyt_df1['share_price']
+        dyt_df1['dividend_fwd'] = dyt_df1['dividend_pay'] * self.frequency
+        dyt_df1['dividend_yield_fwd'] = (dyt_df1['dividend_pay'] * self.frequency) / dyt_df1['share_price']
 
         # Convert DYT Dataframe to Pandas DateTime Index
         dyt_df1.index = pd.to_datetime(dyt_df1.index)

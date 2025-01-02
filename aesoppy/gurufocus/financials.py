@@ -45,8 +45,8 @@ class GuruStockAnnualTenK:
 
         # Build New Dataframe with Normalized Column names
 
-        if any(df1.columns == 'Fiscal_year'):
-            df2['fiscal_year'] = df1['Fiscal_Year']
+        if any(df1.columns == 'Fiscal Year'):
+            df2['fiscal_year'] = df1['Fiscal Year']
 
         # Income Statement Items
 
@@ -149,6 +149,15 @@ class GuruStockAnnualTenK:
         if any(df1.columns == 'per_share_data_array.FFO per Share'):
             df2['pershare_ffo'] = df1['per_share_data_array.FFO per Share']
 
+        # Drop TTM Data
+        df2 = df2.loc[df2['fiscal_year'] != 'TTM']
+
+        # Normalize Fiscal Year
+        fy_pattern = r"([\d]{4})-"
+        month_pattern = r"-([\d]{2})"
+
+        df2['fiscal_year'] = df1['Fiscal Year'].str.extract(fy_pattern)
+        df2['fiscal_month'] = df1['Fiscal Year'].str.extract(month_pattern)
 
         return df2
 
