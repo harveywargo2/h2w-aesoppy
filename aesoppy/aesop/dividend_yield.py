@@ -9,7 +9,7 @@ class DividendYieldAnalysis:
         self.dividend_df = kwargs.get('dividend_df', 'error')
         self.frequency = kwargs.get('div_frequency', 4)
         self.price_df = kwargs.get('price_df', 'error')
-        self.lookback = kwargs.get('lookback', 20)
+        self.lookback = kwargs.get('lookback', 21)
         self.div_yield_analysis_df = self._dyt_df()
         self.div_yield_analysis_aggregate_df = self._dyt_aggregate_df()
 
