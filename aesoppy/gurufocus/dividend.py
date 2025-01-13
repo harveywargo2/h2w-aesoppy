@@ -10,7 +10,8 @@ class GuruDividendHistory:
         self.api_data = self._api_data()
         self.api_data_type = type(self.api_data)
         self.api_data_df = self._api_data_df()
-        self.aesop_normalized = self._aesop_normalized()
+        self.aesop_div_data_df = self._aesop_normalized()
+        self.aesop_columns = self.aesop_normalized.columns
 
 
     def _api_data(self):
@@ -34,10 +35,6 @@ class GuruDividendHistory:
         })
         div_df['dividend_type'] = div_df['dividend_type'].replace('Cash Div.', 'regular')
         div_df['dividend_type'] = div_df['dividend_type'].replace('Special Div.', 'special')
-
-        #div_df['ex_date'] = pd.to_datetime(div_df['ex_date'])
-        #div_df['record_date'] = pd.to_datetime(div_df['record_date'])
-        #div_df['pay_date'] = pd.to_datetime(div_df['pay_date'])
 
         div_df['dividend_amount'] = div_df['dividend_amount']
 
