@@ -10,8 +10,7 @@ class GuruPriceHistory:
         self.api_data = self._api_data()
         self.api_data_type = type(self._api_data)
         self.api_data_df = self._api_data_df()
-        self.aesop_normalized = self._aesop_normalized()
-        self.aesop_columns = self.aesop_normalized.columns
+        self.aesop_price_df = self._aesop_normalized()
 
 
     def _api_data(self):
