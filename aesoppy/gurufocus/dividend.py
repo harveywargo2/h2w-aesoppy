@@ -11,7 +11,6 @@ class GuruDividendHistory:
         self.api_data_type = type(self.api_data)
         self.api_data_df = self._api_data_df()
         self.aesop_div_data_df = self._aesop_normalized()
-        self.aesop_columns = self.aesop_normalized.columns
 
 
     def _api_data(self):
