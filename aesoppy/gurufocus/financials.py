@@ -20,7 +20,8 @@ class GuruStockAnnualTenK:
         self.ticker = kwargs.get('ticker', 'error')
         self.api_data = self._api_data()
         self.api_data_type = type(self.api_data)
-        self.aesop_normalized = self._aesop_normalized()
+        self.aesop_fin_df = self._aesop_normalized()
+        self.aesop_pershare_df = self._aesop_pershare()
 
 
     def _api_data(self):
@@ -126,13 +127,28 @@ class GuruStockAnnualTenK:
             df2['stock_buyback'] = df1['cashflow_statement.Repurchase of Stock']
 
 
-        # Other Optional Value
+        # Drop TTM Data
+        df2 = df2.loc[df2['fiscal_year'] != 'TTM']
 
-        if any(df1.columns == 'valuation_and_quality.Market Cap'):
-            df2['market_cap'] = df1['valuation_and_quality.Market Cap']
+        # Normalize Fiscal Year
+        fy_pattern = r"([\d]{4})-"
+        month_pattern = r"-([\d]{2})"
 
-        if any(df1.columns == 'valuation_and_quality.Enterprise Value'):
-            df2['market_cap'] = df1['valuation_and_quality.Enterprise Value']
+        df2['fiscal_year'] = df1['Fiscal Year'].str.extract(fy_pattern)
+        df2['fiscal_month'] = df1['Fiscal Year'].str.extract(month_pattern)
+
+        return df2
+
+
+    def _aesop_pershare(self):
+
+        df1 = self.api_data
+        df2 = pd.DataFrame()
+
+        # Build New Dataframe with Normalized Column names
+
+        if any(df1.columns == 'Fiscal Year'):
+            df2['fiscal_year'] = df1['Fiscal Year']
 
         if any(df1.columns == 'per_share_data_array.Revenue per Share'):
             df2['pershare_revenue'] = df1['per_share_data_array.Revenue per Share']
