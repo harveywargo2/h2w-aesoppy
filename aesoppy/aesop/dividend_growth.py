@@ -4,11 +4,13 @@ import aesoppy.aesop as aesop
 
 class DividendPerShareCy:
 
+
     def __init__(self, **kwargs):
         self.dividend_df = kwargs.get('dividend_df', 'error')
         self.frequency = kwargs.get('div_frequency', 4)
         self.lookback = kwargs.get('lookback', 21)
         self.pershare_div_cy_growth_df = self._pershare_div_cy_growth_df()
+
 
     def _pershare_div_cy_growth_df(self):
         divgro_cy_df1 = self.dividend_df
@@ -33,14 +35,17 @@ class DividendPerShareCy:
 
 
 class DividendPerShareFy:
+
+
     def __init__(self, **kwargs):
-        self.fin_df = kwargs.get('financials_df', 'error')
+        self.pershare_df = kwargs.get('pershare_df', 'error')
         self.frequency = kwargs.get('div_frequency', 4)
         self.lookback = kwargs.get('lookback', 21)
         self.pershare_div_fy_growth_df = self._pershare_div_fy_growth_df()
 
+
     def _pershare_div_fy_growth_df(self):
-        df1 = self.fin_df
+        df1 = self.pershare_df
         divgro_fy_df1 = pd.DataFrame(df1['pershare_dividends'], index=df1.index)
         current_year = aesop.aesop_now.year
         lookback = self.lookback
@@ -56,12 +61,15 @@ class DividendPerShareFy:
         return divgro_fy_df1
 
 
-class CashForDividendsFy:
+class DividendTotalCashFy:
+
+
     def __init__(self, **kwargs):
         self.fin_df = kwargs.get('financials_df', 'error')
         self.frequency = kwargs.get('div_frequency', 4)
         self.lookback = kwargs.get('lookback', 21)
-        self.dividend_cash_fy_df = self._dividend_cash_fy_df()
+        self.dividend_paid_fy_df = self._dividend_cash_fy_df()
+
 
     def _dividend_cash_fy_df(self):
         df1 = self.fin_df
@@ -78,11 +86,4 @@ class CashForDividendsFy:
 
 
         return divgro_df1
-
-
-
-
-
-
-
 
