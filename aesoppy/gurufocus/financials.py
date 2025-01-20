@@ -57,6 +57,12 @@ class GuruStockAnnualTenK:
         if any(df1.columns == 'income_statement.Gross Profit'):
             df2['gross_profit'] = df1['income_statement.Gross Profit']
 
+        if any(df1.columns == 'income_statement.Selling, General, & Admin. Expense'):
+            df2['sga'] = df1['income_statement.Selling, General, & Admin. Expense']
+
+        if any(df1.columns == 'income_statement.Research & Development'):
+            df2['rnd'] = df1['income_statement.Research & Development']
+
         if any(df1.columns == 'income_statement.Operating Income'):
             df2['operating_income'] = df1['income_statement.Operating Income']
 
@@ -65,6 +71,8 @@ class GuruStockAnnualTenK:
 
         if any(df1.columns == 'income_statement.Net Income'):
             df2['net_income'] = df1['income_statement.Net Income']
+
+
 
 
         # Balance Sheet Items
