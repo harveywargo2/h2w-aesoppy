@@ -173,6 +173,12 @@ class GuruStockAnnualTenK:
         if any(df1.columns == 'per_share_data_array.FFO per Share'):
             df2['pershare_ffo'] = df1['per_share_data_array.FFO per Share']
 
+        if any(df1.columns == 'valuation_and_quality.Highest Stock Price'):
+            df2['pershare_high_price'] = df1['valuation_and_quality.Highest Stock Price']
+
+        if any(df1.columns == 'valuation_and_quality.Lowest Stock Price'):
+            df2['pershare_low_price'] = df1['valuation_and_quality.Lowest Stock Price']
+
         # Drop TTM Data
         df2 = df2.loc[df2['fiscal_year'] != 'TTM']
 
