@@ -31,9 +31,10 @@ class Margins:
 
     def _cost_margins(self):
         df1 = self.fin_df
-        df = pd.DataFrame(df1[['revenue', 'gross_profit', 'operating_income', 'net_income', 'capex']], index=df1.index)
+        df = pd.DataFrame(df1[['revenue', 'gross_profit', 'rnd', 'sga', 'capex']], index=df1.index)
         df['cogs_margin'] = (df['revenue'] - df['gross_profit']) / df['revenue']
-        df['sga_margin'] = (df['revenue'] - df['operating_income']) / df['revenue']
+        df['sga_margin'] = df['sga'] / df['revenue']
+        df['rnd_margin'] = df['rnd'] / df['revenue']
         df['capex_margin'] = abs(df['capex'] / df['revenue'])
 
         return df
