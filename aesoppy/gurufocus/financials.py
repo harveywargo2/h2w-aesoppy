@@ -81,7 +81,7 @@ class GuruStockAnnualTenK:
             df2['cash_equivalents'] = df1['balance_sheet.Cash and Cash Equivalents']
 
         if any(df1.columns == 'balance_sheet.Marketable Securities'):
-            df2['market_securites'] = df1['balance_sheet.Marketable Securities']
+            df2['market_securities'] = df1['balance_sheet.Marketable Securities']
 
         if any(df1.columns == 'balance_sheet.Total Current Assets'):
             df2['current_assets'] = df1['balance_sheet.Total Current Assets']
