@@ -134,6 +134,12 @@ class GuruStockAnnualTenK:
         if any(df1.columns == 'cashflow_statement.Repurchase of Stock'):
             df2['stock_buyback'] = df1['cashflow_statement.Repurchase of Stock']
 
+        if any(df1.columns == 'cashflow_statement.Payments of Debt'):
+            df2['debt_paid'] = df1['cashflow_statement.Payments of Debt']
+
+        if any(df1.columns == 'cashflow_statement.Issuance of Debt'):
+            df2['debt_issued'] = df1['cashflow_statement.Issuance of Debt']
+
 
         # Drop TTM Data
         df2 = df2.loc[df2['fiscal_year'] != 'TTM']
