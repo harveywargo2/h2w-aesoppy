@@ -5,4 +5,5 @@ from aesoppy.aesop.dividend_growth import (DividendPerShareCy, DividendPerShareF
 from aesoppy.aesop.dividend_yield_theory import DividendYieldTheory
 from aesoppy.aesop.growth import Growth
 from aesoppy.aesop.margins import Margins
+from aesoppy.aesop.owners import Owners
 
