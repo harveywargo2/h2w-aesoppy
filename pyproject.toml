@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 
 name = "aesoppy"
-version = "1.0.2"
+version = "1.1.0"
 description = "Python Library for Data Wrangling and API Interactions on Stock Market Data"
 readme = "README.md"
 authors = [{ name = "Harvey Wargo"}]
@@ -25,7 +25,8 @@ keywords = [
 
 dependencies = [
     "requests",
-    "pandas"
+    "pandas",
+    "datetime"
 ]
 
 requires-python = ">=3.9"
