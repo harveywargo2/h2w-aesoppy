@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 
 name = "h2w-aesoppy"
-version = "1.1.1"
+version = "1.1.0"
 description = "Python Library for Data Wrangling and API Interactions on Stock Market Data"
 readme = "README.md"
 authors = [{ name = "Harvey Wargo"}]
