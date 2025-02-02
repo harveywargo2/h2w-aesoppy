@@ -13,7 +13,7 @@ class DividendCoverage:
     def _div_coverage_df(self):
         df1 = self.fin_df
         df2 = pd.DataFrame(df1[['cash_for_dividends', 'cash_from_ops', 'net_income', 'free_cash_flow',
-                                'cash_equivalents', 'market_securites', 'treasury_stock']], index=df1.index
+                                'cash_equivalents', 'market_securities', 'treasury_stock']], index=df1.index
                            )
 
         return df2
@@ -31,9 +31,9 @@ class DividendCoverage:
 
     def _cash_coverage_df(self):
         df1 = self._div_coverage_df()
-        df2 = pd.DataFrame(df1[['cash_for_dividends', 'cash_equivalents', 'market_securites', 'cash_from_ops']], index=df1.index)
+        df2 = pd.DataFrame(df1[['cash_for_dividends', 'cash_equivalents', 'market_securities', 'cash_from_ops']], index=df1.index)
 
-        df2['payout_cce'] = abs(df2['cash_for_dividends'] / (df2['cash_equivalents'] + df2['market_securites']))
+        df2['payout_cce'] = abs(df2['cash_for_dividends'] / (df2['cash_equivalents'] + df2['market_securities']))
         df2['payout_cfo'] = abs(df2['cash_for_dividends'] / df2['cash_from_ops'])
 
         return df2
